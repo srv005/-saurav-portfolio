@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-blue: #00f0ff;
+  --color-neon-purple: #b026ff;
+  --color-dark-bg: #030305;
+  --color-dark-surface: #0a0a0f;
+  
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #030305;
+    --foreground: #f8f8f8;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* Smooth scroll behavior can also be handled by Lenis or framer-motion */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-purple);
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-purple));
+}
+
+/* Utilities for glowing effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+.glow-purple {
+  box-shadow: 0 0 20px rgba(176, 38, 255, 0.5);
+}
