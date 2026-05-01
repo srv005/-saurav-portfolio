@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,17 +40,40 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex gap-8">
-          {navLinks.map((link, index) => (
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex gap-8">
+            {navLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-white/70 hover:text-white hover:text-shadow-glow transition-colors text-sm uppercase tracking-widest relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-neon-blue transition-all group-hover:w-full"></span>
+              </a>
+            ))}
+          </div>
+          
+          <div className="flex items-center gap-4 pl-6 border-l border-white/20">
             <a
-              key={index}
-              href={link.href}
-              className="text-white/70 hover:text-white hover:text-shadow-glow transition-colors text-sm uppercase tracking-widest relative group"
+              href="https://github.com/srv005"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-neon-blue transition-colors hover:scale-110 duration-200"
+              aria-label="GitHub"
             >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-neon-blue transition-all group-hover:w-full"></span>
+              <FaGithub size={20} />
             </a>
-          ))}
+            <a
+              href="https://www.linkedin.com/in/saurav-ag/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-neon-blue transition-colors hover:scale-110 duration-200"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={20} />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Nav Toggle */}
@@ -79,6 +103,27 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          
+          <div className="flex gap-6 mt-4">
+            <a
+              href="https://github.com/srv005"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/5 rounded-full border border-white/10 text-white/70 hover:text-neon-blue hover:border-neon-blue hover:bg-neon-blue/10 transition-all"
+              aria-label="GitHub"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/saurav-ag/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/5 rounded-full border border-white/10 text-white/70 hover:text-neon-blue hover:border-neon-blue hover:bg-neon-blue/10 transition-all"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={24} />
+            </a>
+          </div>
         </motion.div>
       )}
     </motion.nav>

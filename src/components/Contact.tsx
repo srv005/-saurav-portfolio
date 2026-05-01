@@ -21,7 +21,7 @@ export default function Contact() {
           <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -57,59 +57,16 @@ export default function Contact() {
             </div>
 
             <div className="flex gap-6 mt-12">
-              <a href="#" className="text-white/50 hover:text-neon-blue hover:scale-110 transition-all hover:glow-blue rounded-full p-2">
+              <a href="https://github.com/srv005" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-neon-blue hover:scale-110 transition-all hover:glow-blue rounded-full p-2">
                 <FaGithub size={28} />
               </a>
-              <a href="#" className="text-white/50 hover:text-neon-purple hover:scale-110 transition-all hover:glow-purple rounded-full p-2">
+              <a href="https://www.linkedin.com/in/saurav-ag/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-neon-purple hover:scale-110 transition-all hover:glow-purple rounded-full p-2">
                 <FaLinkedin size={28} />
               </a>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass p-8 rounded-2xl"
-          >
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <label className="block text-white/60 text-sm mb-2" htmlFor="name">NAME</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-blue focus:glow-blue transition-all"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div>
-                <label className="block text-white/60 text-sm mb-2" htmlFor="email">EMAIL</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-purple focus:glow-purple transition-all"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div>
-                <label className="block text-white/60 text-sm mb-2" htmlFor="message">MESSAGE</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  className="w-full bg-dark-bg/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-blue focus:glow-blue transition-all resize-none"
-                  placeholder="Let's build..."
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="group relative w-full py-4 bg-white/5 text-white font-bold tracking-widest rounded-lg overflow-hidden flex items-center justify-center gap-2 hover:bg-white/10 transition-colors border border-white/10 hover:border-neon-blue"
-              >
-                <span>SEND MESSAGE</span>
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
-            </form>
-          </motion.div>
+
         </div>
       </div>
     </section>

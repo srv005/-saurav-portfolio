@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Background3D from "./Background3D";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, FileText } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
@@ -69,22 +70,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-8"
         >
           <a
             href="#projects"
-            className="group relative px-8 py-4 bg-neon-blue text-black font-bold uppercase tracking-widest rounded-lg overflow-hidden flex items-center justify-center gap-2 glow-blue transition-all hover:scale-105"
+            className="group relative px-8 py-4 bg-neon-blue text-black font-bold uppercase tracking-widest rounded-lg overflow-hidden flex items-center justify-center gap-2 glow-blue transition-all hover:scale-105 w-full sm:w-auto"
           >
             <span>View Projects</span>
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a
-            href="#contact"
-            className="group px-8 py-4 bg-transparent text-white border border-white/20 font-bold uppercase tracking-widest rounded-lg hover:border-neon-purple hover:text-neon-purple transition-all flex items-center justify-center hover:glow-purple"
+            href="/Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group px-8 py-4 bg-transparent text-white border border-white/20 font-bold uppercase tracking-widest rounded-lg hover:border-neon-purple hover:text-neon-purple transition-all flex items-center justify-center gap-2 hover:glow-purple w-full sm:w-auto"
           >
-            Contact Me
+            <FileText size={18} />
+            <span>Resume</span>
           </a>
         </motion.div>
+
+
       </div>
       
       {/* Scroll Indicator */}
