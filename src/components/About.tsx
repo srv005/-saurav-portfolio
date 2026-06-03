@@ -1,9 +1,17 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
     <section id="about" className="py-16 bg-[#0f0f0f] border-t border-[#2e2e2e]">
-      <div className="max-w-4xl mx-auto px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="max-w-4xl mx-auto px-6"
+      >
         <h2 className="text-xl font-bold text-white mb-6 font-mono tracking-tight">
           01. ABOUT ME
         </h2>
@@ -36,7 +44,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

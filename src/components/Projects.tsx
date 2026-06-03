@@ -2,6 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -37,7 +38,13 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="py-16 bg-[#0f0f0f] border-t border-[#2e2e2e]">
-      <div className="max-w-4xl mx-auto px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="max-w-4xl mx-auto px-6"
+      >
         <h2 className="text-xl font-bold text-white mb-6 font-mono tracking-tight">
           03. PROJECTS
         </h2>
@@ -46,7 +53,7 @@ export default function Projects() {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="p-5 rounded bg-[#1a1a1a] border border-[#2e2e2e] flex flex-col justify-between"
+              className="p-5 rounded bg-[#1a1a1a] border border-[#2e2e2e] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#404040]"
             >
               <div>
                 <div className="flex justify-between items-start mb-3">
@@ -54,10 +61,10 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   <div className="flex gap-3 text-[#a0a0a0]">
-                    <a href={project.github} className="hover:text-white transition-colors" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <a href={project.github} className="hover:text-white hover:-translate-y-0.5 hover:translate-x-0.5 transition-all duration-200 transform" target="_blank" rel="noreferrer" aria-label="GitHub">
                       <FaGithub size={18} />
                     </a>
-                    <a href={project.demo} className="hover:text-white transition-colors" target="_blank" rel="noreferrer" aria-label="Live Demo">
+                    <a href={project.demo} className="hover:text-white hover:-translate-y-0.5 hover:translate-x-0.5 transition-all duration-200 transform" target="_blank" rel="noreferrer" aria-label="Live Demo">
                       <ExternalLink size={18} />
                     </a>
                   </div>
@@ -72,7 +79,7 @@ export default function Projects() {
                 {project.tech.map((tech, techIdx) => (
                   <span
                     key={techIdx}
-                    className="text-[10px] font-mono text-[#a0a0a0] bg-[#0f0f0f] border border-[#2e2e2e] px-2 py-0.5 rounded"
+                    className="text-[10px] font-mono text-[#a0a0a0] bg-[#0f0f0f] border border-[#2e2e2e] px-2 py-0.5 rounded hover:text-white hover:border-[#404040] hover:-translate-y-0.5 hover:scale-105 transition-all duration-200 transform cursor-default"
                   >
                     {tech}
                   </span>
@@ -81,7 +88,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

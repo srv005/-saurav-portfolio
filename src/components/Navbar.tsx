@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,9 +15,14 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#0f0f0f] border-b border-[#2e2e2e] py-4">
+    <motion.nav
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 left-0 w-full z-50 bg-[#0f0f0f] border-b border-[#2e2e2e] py-4"
+    >
       <div className="max-w-4xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="font-mono text-base font-bold text-[#ffffff] tracking-tight">
+        <a href="#" className="font-mono text-base font-bold text-[#ffffff] tracking-tight hover:text-[#a0a0a0] transition-colors duration-200">
           saurav_agrawal
         </a>
 
@@ -26,7 +32,7 @@ export default function Navbar() {
             <a
               key={index}
               href={link.href}
-              className="text-[#a0a0a0] hover:text-[#ffffff] transition-colors text-sm font-mono"
+              className="text-[#a0a0a0] hover:text-[#ffffff] transition-colors duration-200 text-sm font-mono relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.name}
             </a>
@@ -35,7 +41,7 @@ export default function Navbar() {
 
         {/* Mobile Nav Toggle */}
         <button
-          className="md:hidden text-[#e0e0e0] focus:outline-none"
+          className="md:hidden text-[#e0e0e0] focus:outline-none hover:text-white transition-colors duration-200"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle Menu"
         >
@@ -51,13 +57,13 @@ export default function Navbar() {
               key={index}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[#a0a0a0] hover:text-[#ffffff] text-sm font-mono w-full"
+              className="text-[#a0a0a0] hover:text-[#ffffff] text-sm font-mono w-full transition-colors duration-200"
             >
               {link.name}
             </a>
           ))}
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 }
