@@ -22,42 +22,71 @@ const skills = [
 ];
 
 export default function Skills() {
-  return (
-    <section id="skills" className="py-16 bg-[#0f0f0f] border-t border-[#2e2e2e]">
-      <motion.div 
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto px-6"
-      >
-        <h2 className="text-xl font-bold text-white mb-6 font-mono tracking-tight">
-          02. SKILLS
-        </h2>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
 
-        <div className="grid sm:grid-cols-2 gap-8">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
+  return (
+    <section id="skills" className="py-16 bg-app-bg border-t border-border-color transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.h2 
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-xl font-bold text-heading-color mb-6 font-mono tracking-tight transition-colors duration-200"
+        >
+          02. SKILLS
+        </motion.h2>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid sm:grid-cols-2 gap-8"
+        >
           {skills.map((skillGroup, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-5 rounded bg-[#1a1a1a] border border-[#2e2e2e] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#404040]"
+              variants={itemVariants}
+              className="p-5 rounded bg-card-bg border border-border-color transition-all duration-300 hover:-translate-y-0.5 hover:border-heading-color hover:bg-card-hover"
             >
-              <h3 className="text-sm font-bold mb-4 text-[#e0e0e0] font-mono">
+              <h3 className="text-sm font-bold mb-4 text-app-fg font-mono transition-colors duration-200">
                 {skillGroup.category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {skillGroup.items.map((item, itemIdx) => (
                   <span
                     key={itemIdx}
-                    className="px-2.5 py-1 bg-[#0f0f0f] border border-[#2e2e2e] rounded text-xs text-[#a0a0a0] font-mono hover:text-[#ffffff] hover:border-[#404040] hover:-translate-y-0.5 hover:scale-105 transition-all duration-200 transform inline-block cursor-default"
+                    className="px-2.5 py-1 bg-app-bg border border-border-color rounded text-xs text-text-muted font-mono hover:text-heading-color hover:border-heading-color hover:-translate-y-0.5 hover:scale-105 transition-all duration-200 transform inline-block cursor-default"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

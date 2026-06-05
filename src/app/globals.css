@@ -4,30 +4,49 @@
   --font-sans: var(--font-inter), sans-serif;
   --font-mono: var(--font-mono), monospace;
   
-  --color-bg-dark: #0f0f0f;
-  --color-bg-card: #1a1a1a;
-  --color-border-dark: #2e2e2e;
-  --color-text-muted: #a0a0a0;
-  --color-text-primary: #e0e0e0;
+  --color-app-bg: var(--app-bg);
+  --color-app-fg: var(--app-fg);
+  --color-card-bg: var(--card-bg);
+  --color-card-hover: var(--card-hover);
+  --color-border-color: var(--border-color);
+  --color-text-muted: var(--text-muted);
+  --color-heading-color: var(--heading-color);
 }
 
 @layer base {
   :root {
-    --background: #0f0f0f;
-    --foreground: #e0e0e0;
+    --app-bg: #0f0f0f;
+    --app-fg: #e0e0e0;
+    --card-bg: #1a1a1a;
+    --card-hover: #222222;
+    --border-color: #2e2e2e;
+    --text-muted: #a0a0a0;
+    --heading-color: #ffffff;
+  }
+  
+  html.light {
+    --app-bg: #f9f9f9;
+    --app-fg: #1f1f1f;
+    --card-bg: #ffffff;
+    --card-hover: #f0f0f0;
+    --border-color: #e0e0e0;
+    --text-muted: #6b7280;
+    --heading-color: #000000;
   }
   
   body {
-    background-color: #0f0f0f;
-    color: #e0e0e0;
+    background-color: var(--app-bg);
+    color: var(--app-fg);
     font-family: var(--font-sans);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-mono);
-    color: #ffffff;
+    color: var(--heading-color);
+    transition: color 0.3s ease;
   }
 }
 
@@ -38,11 +57,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f0f0f;
+  background: var(--app-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2e2e2e;
+  background: var(--border-color);
   border-radius: 3px;
 }
 

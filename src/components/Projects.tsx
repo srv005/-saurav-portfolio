@@ -36,41 +36,82 @@ const projects = [
 ];
 
 export default function Projects() {
-  return (
-    <section id="projects" className="py-16 bg-[#0f0f0f] border-t border-[#2e2e2e]">
-      <motion.div 
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-4xl mx-auto px-6"
-      >
-        <h2 className="text-xl font-bold text-white mb-6 font-mono tracking-tight">
-          03. PROJECTS
-        </h2>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
 
-        <div className="grid md:grid-cols-2 gap-6">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
+  return (
+    <section id="projects" className="py-16 bg-app-bg border-t border-border-color transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-6">
+        <motion.h2 
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-xl font-bold text-heading-color mb-6 font-mono tracking-tight transition-colors duration-200"
+        >
+          03. PROJECTS
+        </motion.h2>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 gap-6"
+        >
           {projects.map((project, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-5 rounded bg-[#1a1a1a] border border-[#2e2e2e] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-[#404040]"
+              variants={itemVariants}
+              className="p-5 rounded bg-card-bg border border-border-color flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-heading-color hover:bg-card-hover"
             >
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-base font-bold text-white font-mono">
+                  <h3 className="text-base font-bold text-heading-color font-mono transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <div className="flex gap-3 text-[#a0a0a0]">
-                    <a href={project.github} className="hover:text-white hover:-translate-y-0.5 hover:translate-x-0.5 transition-all duration-200 transform" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <div className="flex gap-3 text-text-muted transition-colors duration-200">
+                    <a 
+                      href={project.github} 
+                      className="hover:text-heading-color hover:-translate-y-0.5 hover:translate-x-0.5 active:scale-90 transition-all duration-200 transform cursor-pointer" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="GitHub"
+                    >
                       <FaGithub size={18} />
                     </a>
-                    <a href={project.demo} className="hover:text-white hover:-translate-y-0.5 hover:translate-x-0.5 transition-all duration-200 transform" target="_blank" rel="noreferrer" aria-label="Live Demo">
+                    <a 
+                      href={project.demo} 
+                      className="hover:text-heading-color hover:-translate-y-0.5 hover:translate-x-0.5 active:scale-90 transition-all duration-200 transform cursor-pointer" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      aria-label="Live Demo"
+                    >
                       <ExternalLink size={18} />
                     </a>
                   </div>
                 </div>
 
-                <p className="text-sm text-[#a0a0a0] mb-4 leading-relaxed">
+                <p className="text-sm text-text-muted mb-4 leading-relaxed transition-colors duration-200">
                   {project.description}
                 </p>
               </div>
@@ -79,16 +120,16 @@ export default function Projects() {
                 {project.tech.map((tech, techIdx) => (
                   <span
                     key={techIdx}
-                    className="text-[10px] font-mono text-[#a0a0a0] bg-[#0f0f0f] border border-[#2e2e2e] px-2 py-0.5 rounded hover:text-white hover:border-[#404040] hover:-translate-y-0.5 hover:scale-105 transition-all duration-200 transform cursor-default"
+                    className="text-[10px] font-mono text-text-muted bg-app-bg border border-border-color px-2 py-0.5 rounded hover:text-heading-color hover:border-heading-color hover:-translate-y-0.5 hover:scale-105 transition-all duration-200 transform cursor-default"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
